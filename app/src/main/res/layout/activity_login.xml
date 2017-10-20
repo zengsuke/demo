@@ -65,18 +65,28 @@
         android:inputType="textPassword"
         android:textSize="15dp" />
 </LinearLayout>
-
-
         <Button
-            android:id="@+id/btn_login"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_below="@id/second_linearlayout"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="30dp"
-            android:text="登      入"
-            android:textSize="20sp" />
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/second_linearlayout"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:text="登      入"
+        android:textSize="20sp" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_login"
+           >
+            <ProgressBar
+                android:id="@+id/ProgressBar"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

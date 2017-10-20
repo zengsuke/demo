@@ -1,4 +1,4 @@
-package com.example.administrator.demo;
+package com.example.administrator.demo.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,8 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.administrator.demo.Class.CircularAnim;
+import com.example.administrator.demo.R;
 
 
 public class LoginActivity extends AppCompatActivity{
@@ -21,9 +25,8 @@ public class LoginActivity extends AppCompatActivity{
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
         final TextView usernameview = (TextView) findViewById(R.id.login_username);
-        usernameview.setText(usernameInfo);
         final TextView passwordview = (TextView) findViewById(R.id.login_password);
-        passwordview.setText(passwordInfo);
+        final ProgressBar mProgressBar=(ProgressBar)findViewById(R.id.ProgressBar);
         Button login=(Button)findViewById(R.id.btn_login);
         login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -35,8 +38,15 @@ public class LoginActivity extends AppCompatActivity{
                     return;
                 }
                 if (inputname.equals(username) && inputpassword.equals(userpass)) {
-                      Intent intent=new Intent(LoginActivity.this,MainActivity.class);
-                      startActivity(intent);
+                    CircularAnim.fullActivity(LoginActivity.this, mProgressBar)
+                            .colorOrImageRes(R.color.colorPrimary)
+                            .go(new CircularAnim.OnAnimationEndListener() {
+                                @Override
+                                public void onAnimationEnd() {
+                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
+                                }
+                            });
                 } else {
                     Toast.makeText(getApplicationContext(), "用户名或密码有误", Toast.LENGTH_SHORT).show();
                     return;
